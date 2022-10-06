@@ -20,7 +20,6 @@ module AsMethod
   def as_method(service_object, name: nil)
     includable_module = FindOrDefineIncludableModule.call(service_object, name)
     unless self.included_modules.include?(includable_module)
-      #puts "-- include #{service_object.inspect} as #{name.inspect}"
       includable_module
     else
       Kernel # a bit faster

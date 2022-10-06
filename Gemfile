@@ -2,4 +2,5 @@
 
 source "https://rubygems.org"
 
-gem "rspec"
+# Gem's dependencies come from .gemspec file:
+gemspec

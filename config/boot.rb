@@ -10,4 +10,5 @@ ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 require "bundler/setup"
 $:.unshift "#{ROOT_PATH}/lib"
 
+require "pry"
 require "as_method"

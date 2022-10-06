@@ -4,30 +4,36 @@ Usage example:
 
 ```ruby
 class CreateUser
-  include as_method ValidateUserName, name: :validate_name!
-  include as_method ValidateEmail, name: :validate_email!
+  include as_method ValidateUserAttributes, name: :validate!
   include as_method Generators::GeneratePassword
-  include as_method SaveModel
+  include as_method SaveModel, name: :save
 
   def call(name, email)
-    validate_name!(name)
-    validate_email!(email)
+    @name = name
+    @email = email
     user = User.new(attributes)
-    save_model(user)
+    validate!(user)
+    save(user)
   end
 
   private
 
-  attr_accessor :name, :email
-
   def attributes
     {
-      name: name,
+      name: @name,
+      email: @email,
       password: generate_password(length: 30),
     }
   end
 end
 ```
+
+## Why?
+
+This approach allows you to:
+- keep bringing reusable methods in the old-fashioned way via `include`, just like our ancestors did;
+- make methods extracted to SOs look and feel just like regular methods;
+- have all used Service Objects (SOs) listed as explicit dependencies;
 
 ## Compatibility
 
