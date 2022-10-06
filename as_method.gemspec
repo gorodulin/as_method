@@ -14,10 +14,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/gorodulin/as_method"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.0.0")
 
   spec.metadata = {
-    "changelog_uri"     => "https://github.com/gorodulin/as_method/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/gorodulin/as_method/blob/main/CHANGELOG.md",
     "homepage_uri"      => spec.homepage,
     "source_code_uri"   => "https://github.com/gorodulin/as_method",
   }
