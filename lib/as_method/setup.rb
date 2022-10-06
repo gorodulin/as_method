@@ -9,7 +9,3 @@
 unless Object.singleton_class.included_modules.include?(AsMethod)
   Object.extend AsMethod
 end
-
-# unless Module.included_modules.include?(AsMethod)
-#   Module.include AsMethod
-# end

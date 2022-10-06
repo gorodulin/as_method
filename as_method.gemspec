@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
     "source_code_uri"   => "https://github.com/gorodulin/as_method",
   }
 
-  spec.files = Dir["lib/**/*.rb"] + ["LICENSE", "README.md"]
+  spec.files = Dir["lib/**/*.rb"] + %w{LICENSE README.md CHANGELOG.md}
 
   spec.require_paths = ["lib"]
   spec.add_development_dependency "rspec", "~> 3.2"
