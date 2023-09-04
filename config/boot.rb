@@ -11,4 +11,4 @@ require "bundler/setup"
 $:.unshift "#{ROOT_PATH}/lib"
 
 require "pry"
-require "as_method"
+require "service_object_injection"

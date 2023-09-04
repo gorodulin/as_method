@@ -1,5 +1,8 @@
+# frozen_string_literal: true
 
 require File.join(__dir__, *%w[.. config boot.rb])
+
+Dir[File.join(__dir__, *%w[support ** *.rb])].sort.each { require _1 }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

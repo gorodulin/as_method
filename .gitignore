@@ -2,4 +2,8 @@
 .ruby-version
 .rspec_status
 .vscode
+.unused
+.experiments
+.DS_Store
 *.gem
+*.code-workspace

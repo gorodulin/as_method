@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module AsMethod
+module ServiceObjectInjection
   module ModuleName
-    module GenerateFromUnderscored
+    module GenerateFromSnakeCase
 
       REPLACEMENTS = {
         "-" => "_Min",
@@ -25,12 +25,12 @@ module AsMethod
 
       def self.call(string)
         return unless string
-        
+
         string.to_s
           .gsub(/(?:_|(^))([a-z\d]{1})/) { "#{$1}#{$2.capitalize}" }
           .gsub(/[#{Regexp.escape(REPLACEMENTS.keys.join)}]/, REPLACEMENTS)
       end
 
-    end # ... GenerateFromUnderscored
+    end # ... GenerateFromSnakeCase
   end # ... ModuleName
-end # ... AsMethod
+end # ... ServiceObjectInjection
