@@ -2,7 +2,12 @@
 
 require File.join(__dir__, *%w[.. config boot.rb])
 
-Dir[File.join(__dir__, *%w[support ** *.rb])].sort.each { require _1 }
+if Gem::Specification.find_all_by_name("simplecov").any?
+  require "simplecov"
+  SimpleCov.start
+end
+
+Dir[File.join(__dir__, *%w[support ** *.rb])].each { require _1 }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -2,7 +2,7 @@
 
 # THIS IS A STORY CODE SNIPPET
 
-module Story01
+module Story03
 
   class DoSomething
     def self.call
@@ -10,10 +10,11 @@ module Story01
     end
   end
 
-  class DummyKlass
+  module IncludableModule
     extend AsMethod::Allow
     include as_method DoSomething
     include as_method DoSomething, name: :do_something_else, access: :public
+
   end
 
 end

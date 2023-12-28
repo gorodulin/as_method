@@ -53,7 +53,7 @@ RSpec.describe "Story06" do
         subject { klass.singleton_class }
         it "includes modules bringing service objects" do
           expect(subject.included_modules.map(&:name)).to include \
-            "#{mod}",
+            mod.to_s,
             "#{ns}::DoSomething::AsPrivateMethod__DoSomething",
             "#{ns}::DoSomething::AsPublicMethod__DoSomethingElse"
         end

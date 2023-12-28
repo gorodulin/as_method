@@ -1,0 +1,15 @@
+
+module <%= module_name %>
+
+  @_injectable_method = "<%= method_name %>"
+  @_injectable_object = <%= object %>
+
+  def self.ruby2_keywords(*); end if RUBY_VERSION < "2.7"
+
+  ruby2_keywords def <%= method_name %>(*args, &block)
+    ::<%= object %>.call(*args, &block)
+  end
+
+  <%= method_access %> :<%= method_name %>
+
+end

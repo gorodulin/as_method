@@ -8,7 +8,8 @@ ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
 # Set up gems listed in the Gemfile.
 require "bundler/setup"
-$:.unshift "#{ROOT_PATH}/lib"
+$LOAD_PATH.unshift "#{ROOT_PATH}/lib"
 
-require "pry"
-require "service_object_injection"
+require "pry" if Gem::Specification.find_all_by_name("pry").any?
+
+require "as_method"

@@ -1,43 +1,14 @@
 # Service Object Injection
 
-# Closure experiment
-
-module MyModule
-  s = "some name"
-  define_method(:abc) { puts s }
-  define_method(:abc=) do |val|
-    s = val
-  end
-end
-
-class C1
-  include MyModule
-end
-
-class C2
-  include MyModule
-end
-
-c1 = C1.new
-c2 = C2.new
-
-c1.abc
-c2.abc
-c1.abc = "new name"
-c2.abc
-
-
-
-Dependency injection at its best.
+Static dependency injection at its best.
 
 Usage example:
 
 ```ruby
 class CreateUser
-  include as_service_object ValidateUser, name: :validate!
-  include as_service_object Generators::GeneratePassword
-  include as_service_object SaveModel, name: :save
-  # include method_alias SaveModel, name: :save
+  include as_method ValidateUserEntity, name: :validate!
+  include as_method Generators::GeneratePassword # -> generate_password()
+  include as_method SaveEntity, name: :save
 
   def call(name, email)
     @name = name
@@ -46,6 +17,8 @@ class CreateUser
     validate!(user)
     save(user)
   end
+
+  def self.call(...) = new.call(...)
 
   private
 
@@ -62,42 +35,40 @@ end
 ## Why?
 
 This approach allows you to:
-- keep bringing reusable methods in the old-fashioned way via `include`, just like our ancestors did;
-- make methods extracted to SOs look and feel just like regular methods;
-- have all used Service Objects (SOs) listed as explicit dependencies;
+- keep bringing reusable methods in the old-fashioned way via `include` or `extend`, just like our ancestors did;
+- make Service Objects (SOs) look and feel just like regular methods;
+- have all used SOs listed as explicit dependencies in-place;
 
 ## Compatibility
 
-Tested on Ruby v2.4 .. v3.1, but it is expected to work on all 2.x versions.
+Tested on Ruby v2.4 .. v3.x, but it is expected to work on all 2.x versions.
 
 ## Installation
 
 Add to your `Gemfile`
 
 ```ruby
-gem "service_object_injection"
+gem "as_method"
 ```
 
-To make `service_object` class method available in all classes, add this line to your application loader:
+To make `as_method` class method available in _all classes and modules_, add this line to your application loader:
 
 ```ruby
-require "service_object_injection/setup"
+require "as_method/setup"
 ```
 
-## Inject instance-specific service objects
-
-Use `with_service_objects` class method to create instances with specific service objects injected.
-
-This can be useful for testing your classes.
+or enable it in place:
 
 ```ruby
-dependencies = {
-  generate_password: GenerateWeakPassword,
-  save: FakeSaveModel,
-}
-CreateUser.with_service_objects(dependencies).new("Bob", "bob@myhost.local")
+class MyClass
+  extend AsMethod::Allow
+  ...
+end
 ```
 
-## Other approaches
+## Alternatives
 
-If you do need dependency injection during object construction, try [dry-auto_inject](https://dry-rb.org/gems/dry-auto_inject) but keep in mind that it comes with tradeoffs: dependencies are implicit and must be stored in a separate "container", object constructor is [being altered](https://dry-rb.org/gems/dry-auto_inject/0.6/how-does-it-work/).
+If you require dependency injection _during object construction_, you might consider using [dry-auto_inject](https://dry-rb.org/gems/dry-auto_inject). However, be aware of the following points:
+
+- Dependencies are implicit and must be managed in a separate 'container'.
+- Object constructors get modified, as explained in detail [here](https://dry-rb.org/gems/dry-auto_inject/0.6/how-does-it-work/)."

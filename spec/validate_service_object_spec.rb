@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe ServiceObjectInjection::ValidateServiceObject do
+RSpec.describe AsMethod::ValidateServiceObject do
   subject { described_class.call(service_object) }
   let(:non_callable_class) { Class.new }
   let(:non_callable_module) { Module.new }
@@ -11,14 +11,14 @@ RSpec.describe ServiceObjectInjection::ValidateServiceObject do
 
   context "when not a Class or a Module" do
     context "when a callable object" do
-      let(:service_object) { Proc.new { true } }
+      let(:service_object) { proc { true } }
       it "raises error" do
         expect { subject }.to raise_error TypeError, /must be a Class or a Module/
       end
     end
 
     context "when a non-callable object" do
-      let(:service_object) { Array.new }
+      let(:service_object) { [] }
       it "raises error" do
         expect { subject }.to raise_error TypeError, /must be a Class or a Module/
       end

@@ -2,8 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe ServiceObjectInjection::ModuleName::StripNamespace do
-
+RSpec.describe AsMethod::ModuleName::StripNamespace do
   describe ".call" do
     it "returns the module or class name without the namespace" do
       [
@@ -21,6 +20,5 @@ RSpec.describe ServiceObjectInjection::ModuleName::StripNamespace do
       expect(described_class.call(nil)).to eq("")
       expect(described_class.call("")).to eq("")
     end
-
   end
 end

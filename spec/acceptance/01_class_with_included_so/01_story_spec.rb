@@ -6,7 +6,6 @@ RSpec.describe "Story01" do
 
   let(:ns) { Story01 }
   let(:service_object) { ns::DoSomething }
-  let(:stub_module) { service_object::Stubbable }
 
   before do
     code = File.read(File.join(__dir__, "01_story.rb"))
@@ -48,9 +47,4 @@ RSpec.describe "Story01" do
     end
   end
 
-  xdescribe "DoSomething service object class" do
-    it "has DoSomething::Stubbable module defined" do
-      expect(ns::DoSomething::Stubbable).to be_a(Module)
-    end
-  end
 end
