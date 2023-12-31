@@ -39,11 +39,27 @@ This approach allows you to:
 - make Service Objects (SOs) look and feel just like regular methods;
 - have all used SOs listed as explicit dependencies in-place;
 
+## YouTube video about the Gem
+
+Click on the image below:
+
+<div align="left">
+      <a href="https://www.youtube.com/watch?v=eX7DLJJUEI8">
+         <img src="https://img.youtube.com/vi/eX7DLJJUEI8/0.jpg" style="width:100%;">
+      </a>
+</div>
+
 ## Compatibility
 
 Tested on Ruby v2.4 .. v3.x, but it is expected to work on all 2.x versions.
 
 ## Installation
+
+> [!IMPORTANT]  
+> Due to a temporary issue the RubyGems currently installs an outdated version of the gem.
+>
+> **For the Latest Version:** To access the most recent version of the gem, please clone it directly from this GitHub repository.
+
 
 Add to your `Gemfile`
 
