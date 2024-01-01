@@ -84,7 +84,10 @@ end
 
 ## Alternatives
 
-If you require dependency injection _during object construction_, you might consider using [dry-auto_inject](https://dry-rb.org/gems/dry-auto_inject). However, be aware of the following points:
+If you require dependency injection _during object construction_, you might consider using [dry-auto_inject](https://dry-rb.org/gems/dry-auto_inject).
 
-- Dependencies are implicit and must be managed in a separate 'container'.
+However, be aware of the following points:
+
+- Dependencies are somewhat implicit as they are defined in a separate file.
 - Object constructors get modified, as explained in detail [here](https://dry-rb.org/gems/dry-auto_inject/0.6/how-does-it-work/)."
+- Resulting methods don't invoke 'call' on objects, they return callables instead.
