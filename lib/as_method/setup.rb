@@ -8,6 +8,5 @@
 
 require "as_method"
 
-class Module
-  extend AsMethod::Allow
-end
+Module.extend(AsMethod::Allow)
+Object.extend(AsMethod::Allow)
