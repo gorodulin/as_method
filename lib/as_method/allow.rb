@@ -8,8 +8,12 @@ module AsMethod
     end
 
     def self.extended(base)
-      base.extend(Helpers::ClassMethods)
-      base.include(Helpers::InstanceMethods) if base.is_a?(Class)
+      if base.is_a?(Class)
+        base.extend(Helpers::ClassMethods)
+        base.include(Helpers::InstanceMethods)
+      else
+        base.singleton_class.include(Helpers::ClassMethods)
+      end
     end
 
   end # ... Allow
