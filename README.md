@@ -55,12 +55,6 @@ Tested on Ruby v2.4 .. v3.x, but it is expected to work on all 2.x versions.
 
 ## Installation
 
-> [!IMPORTANT]  
-> Due to a temporary issue the RubyGems currently installs an outdated version of the gem.
->
-> **For the Latest Version:** To access the most recent version of the gem, please clone it directly from this GitHub repository.
-
-
 Add to your `Gemfile`
 
 ```ruby
