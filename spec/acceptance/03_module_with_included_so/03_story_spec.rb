@@ -26,11 +26,6 @@ RSpec.describe "Story03" do
           expect(mod.public_methods).not_to include(:do_something)
           expect(mod.singleton_methods).not_to include(:do_something)
         end
-
-        xit "calls DoSomething#call (class method) under the hood" do
-          expect(ns::DoSomething).to receive(:call).and_call_original
-          expect(mod.send(:do_something)).to eq(:do_something_call)
-        end
       end
 
       describe "#do_something_else" do

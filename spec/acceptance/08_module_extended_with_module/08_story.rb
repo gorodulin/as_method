@@ -19,7 +19,7 @@ module Story08
 
   module ServiceObjectCollection2
     extend AsMethod::Allow
-    extend as_method DoSomething, name: :klassy_do_somethingdo_something, access: :public
+    extend as_method DoSomething, name: :klassy_do_something, access: :public
     extend as_method DoSomething, name: :klassy_do_something_else, access: :private
 
   end

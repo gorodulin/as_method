@@ -60,8 +60,21 @@ RSpec.describe "Story08" do
     context "when extends another module" do
       subject(:mod) { ns::AggregateInterfaceModule }
 
-      xit "does not register SO methods" do
-        # TODO: implement
+      describe "class methods" do
+        it "are not defined" do
+          expect { mod.send(:klassy_do_something) }.to raise_error NoMethodError
+          expect { mod.send(:klassy_do_something_else) }.to raise_error NoMethodError
+          expect { mod.singleton_class.send(:klassy_do_something) }.to raise_error NoMethodError
+          expect { mod.singleton_class.send(:klassy_do_something_else) }.to raise_error NoMethodError
+        end
+      end
+
+      it "includes modules of service objects" do
+        expect(mod.singleton_class.included_modules.map(&:name)).to include \
+          "#{ns}::InterfaceModule"
+        expect(mod.singleton_class.included_modules.map(&:name)).not_to include \
+          "#{ns}::ServiceObjectCollection1",
+          "#{ns}::ServiceObjectCollection2"
       end
     end
 
