@@ -92,10 +92,6 @@ However, be aware of the following points:
 
 ```
                   user       system      total      real       memory
-that calls two other service objects (2052 unique classes in total)
-
-```
-                  user       system      total      real       memory
 pure Ruby         3.689327   0.047354   3.736681 ( 3.744128)   27440
 as_method         6.219795   0.038531   6.258326 ( 6.298066)   37652
 dry-auto_inject  22.121456   0.119032  22.240488 (22.467116)   55408
@@ -108,4 +104,3 @@ Ruby version: 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin22]
 - extra spec for circular dependencies (SO1 includes SO2, SO2 includes SO1, directly and via modules)
 - extra spec for Base Service Object class that includes another SO
 - spec for AsMethod::Allow (extending a base class and a module)
-- hook for overriding method name building logic
