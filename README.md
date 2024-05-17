@@ -85,3 +85,27 @@ However, be aware of the following points:
 - Dependencies are somewhat implicit as they are defined in a separate file.
 - Object constructors get modified, as explained in detail [here](https://dry-rb.org/gems/dry-auto_inject/0.6/how-does-it-work/)."
 - Resulting methods don't invoke 'call' on objects, they return callables instead.
+
+## Benchmark results:
+
+1000 iterations of a Test Service Object call. It does nothing but calls two other service objects, they call two other service objects each, and so on. (Depth 11 levels, 2049 unique classes, 4095 calls).
+
+```
+                  user       system      total      real       memory
+that calls two other service objects (2052 unique classes in total)
+
+```
+                  user       system      total      real       memory
+pure Ruby         3.689327   0.047354   3.736681 ( 3.744128)   27440
+as_method         6.219795   0.038531   6.258326 ( 6.298066)   37652
+dry-auto_inject  22.121456   0.119032  22.240488 (22.467116)   55408
+```
+
+Ruby version: 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin22]
+
+## TODO:
+
+- extra spec for circular dependencies (SO1 includes SO2, SO2 includes SO1, directly and via modules)
+- extra spec for Base Service Object class that includes another SO
+- spec for AsMethod::Allow (extending a base class and a module)
+- hook for overriding method name building logic

@@ -9,6 +9,8 @@ Style/StringLiterals:
   EnforcedStyle: double_quotes
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
+  Exclude:
+  - 'lib/as_method/configuration.rb'
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 Metrics/BlockLength:

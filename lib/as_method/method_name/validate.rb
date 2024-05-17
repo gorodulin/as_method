@@ -9,8 +9,10 @@ module AsMethod
       SPECIAL_NAMES = %w{[] ! ~ + ** - * / % << >> & | ^ < <= >= > == === != =~ !~ <=>}.freeze
 
       def self.call(name)
-        return true if name.to_s =~ REGULAR_NAME_REGEX
-        return true if SPECIAL_NAMES.include?(name.to_s)
+        fail ArgumentError unless name.is_a?(String)
+
+        return name if name =~ REGULAR_NAME_REGEX
+        return name if SPECIAL_NAMES.include?(name)
 
         fail ArgumentError, "invalid method name #{name.inspect}"
       end

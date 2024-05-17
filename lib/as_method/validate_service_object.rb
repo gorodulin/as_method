@@ -8,7 +8,7 @@ module AsMethod
         fail TypeError, "#{module_or_class} must be a Class or a Module"
       end
 
-      return if module_or_class.respond_to?(:call)
+      return module_or_class if module_or_class.respond_to?(:call)
 
       fail NoMethodError, "Expected #{module_or_class} to respond to #call method"
     end

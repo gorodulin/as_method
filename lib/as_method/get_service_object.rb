@@ -54,7 +54,7 @@ module AsMethod
         raise NameError, format(AMBIGUOUS_NAME_ERROR_MSG, @obj.inspect, @method_name.inspect)
       end
 
-      (cmethod || imethod).owner.instance_variable_get(:@_injectable_object)
+      (cmethod || imethod).owner.object
     end
   end # ... GetServiceObject
 end # ... AsMethod
